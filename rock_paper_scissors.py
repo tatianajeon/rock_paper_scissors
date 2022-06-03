@@ -7,12 +7,18 @@ def play():
     break_flag = False
 
     # Step 1: Greet & ask for player name.
-    print("\nWelcome to rock paper scissors!")
+    print("\nWelcome to rock paper scissors!\n")
     name = input("\nwhat is your name?: ")
-    # score_board[name]
-    
+    score_board[name] = {}
+    y=0
+    c=0
+    score_board[name]['you'] = y
+    score_board[name]['computer'] = c
+
+
     while True:
 
+    
         if break_flag:
             break
 
@@ -23,8 +29,7 @@ def play():
         if start.lower().strip() == 'yes':
             while True:
                 
-                # y=0
-                # c=0
+                
 
                 # Step4: User chooses option
                 user_input = input("\nChoose 'rock', 'paper', or 'scissors': ") 
@@ -33,38 +38,82 @@ def play():
                 # Step5a: User Chooses Rock
                 if user_input == 'rock' and computer_input == 'paper':
                     print(f"\nThe computer chose {computer_input}, you lose!")
-                    # score_board[name] = {'you': y += 1, 'computer':  c}
+                    c += 1  
+                    score_board[name]['computer'] = c
+                    print(f"\n{score_board[name]}")
+                    
                 elif user_input == 'rock' and computer_input == 'scissors':
                     print(f"\nThe computer chose {computer_input}, you win!")
+                    y += 1  
+                    score_board[name]['you'] = y
+                    print(f"\n{score_board[name]}")
+
                 elif user_input == 'rock' and computer_input == 'rock':
-                    print(f"\nThe computer chose {computer_input}, it's a tie!")   #what happens when there's a 
+                    print(f"\nThe computer chose {computer_input}, it's a tie!") 
+                    print(f"\n{score_board[name]}")
+
+
+
 
                 # Step 5b: User Chooses Paper    
                 elif user_input == 'paper' and computer_input == 'paper':
-                    print(f"\nThe computer chose {computer_input}, it's a tie!") #what happens when there's a tie
+                    print(f"\nThe computer chose {computer_input}, it's a tie!") 
+                    print(f"\n{score_board[name]}")
+                    
                 elif user_input == 'paper' and computer_input == 'scissors':
                     print(f"\nThe computer chose {computer_input}, you lose!")
+                    c += 1  
+                    score_board[name]['computer'] = c
+                    print(f"\n{score_board[name]}")
+
                 elif user_input == 'paper' and computer_input == 'rock':
                     print(f"\nThe computer chose {computer_input}, you win!")  
+                    y += 1  
+                    score_board[name]['you'] = y 
+                    print(f"\n{score_board[name]}")
+
+
+
                     
                 # Step 5c: User Chooses scissors
                 elif user_input == 'scissors' and computer_input == 'paper':
                     print(f"\nThe computer chose {computer_input}, you win!")
+                    y += 1  
+                    score_board[name]['you'] = y 
+                    print(f"\n{score_board[name]}")
+
                 elif user_input == 'scissors' and computer_input == 'scissors':
-                    print(f"\nThe computer chose {computer_input}, its a tie!")    #what happens when there's a tie
+                    print(f"\nThe computer chose {computer_input}, its a tie!")    
+                    print(f"\n{score_board[name]}")
+                    
                 elif user_input == 'scissors' and computer_input == 'rock':
-                    print(f"\nThe computer chose {computer_input}, you lose!")   
+                    print(f"\nThe computer chose {computer_input}, you lose!")
+                    c += 1  
+                    score_board[name]['computer'] = c
+                    print(f"\n{score_board[name]}")
                 
+
+
+
                 # Step 5d: Leave game
                 elif user_input == 'quit':
                     break_flag = True
+                    print("\nThanks for playing!")
+                    print(f"\n{score_board[name]}")
                     break
+
+                elif user_input == 'new':
+                    y=0
+                    c=0
+                    name = input("\nWhose playing now?: ")
+                    score_board[name] = {}
+
                 else:
                     print("\ninvalid input...")
 
         # Step 5d1: End game
         elif break_flag:
-            print("\nThanks for playing!")
+            
             break
         
         # Step 3b: Don't play
@@ -82,8 +131,9 @@ play()
 
 
 # TO DO LIST
-# counting score, return tally 
+#
 # extra feature: ie, name
+
  
 # scoreboard = {}
 
